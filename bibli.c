@@ -1,9 +1,9 @@
 #include "bibli.h"
 
-void initialise_biblio(Biblio *b){
-    //b = (Biblio *) malloc(sizeof(Biblio));
-    b->L = NULL;
-    b->nbliv=0;
+void initialise_biblio(Biblio **b){
+    *b = (Biblio *) malloc(sizeof(Biblio));
+    (*b)->L = NULL;
+    (*b)->nbliv=0;
 }
 
 void ajouter_livre(Biblio *b, s_livre *l){

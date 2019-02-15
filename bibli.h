@@ -18,7 +18,7 @@ typedef struct {
 } Biblio ;
 
 
-void initialise_biblio(Biblio *b); //initialise correctement les champs de la structure à des valeures nulles ou équivalentes
+void initialise_biblio(Biblio **b); //initialise correctement les champs de la structure à des valeures nulles ou équivalentes
 
 void ajouter_livre(Biblio *b, s_livre *l);  //ajouter d'un livre dans une bibliothèque
 
