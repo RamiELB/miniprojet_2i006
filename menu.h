@@ -10,8 +10,6 @@ void choix_menu(Biblio *b); //lis le choix du menu et fait appel aux fonctions c
 
 void afficher_liste_livres(s_livre *liste); //affiche tous les livres d'une liste chainee
 
-void scan_entree(char *s); //scanf personnalisé avec nettoyage du buffer
-
 void ajout_livre_utilisateur(Biblio *b); //fonction permettant à l'utilisateur d'ajouter un livre
 
 void free_livres(s_livre* l); //pour faire plaisir à Nell

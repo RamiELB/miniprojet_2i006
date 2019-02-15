@@ -15,5 +15,8 @@ entree_sortie.o: entree_sortie.c
 menu.o : menu.c
 	gcc -c $(CFLAGS) menu.c
 
+b_hachage.o : b_hachage.c
+	gcc -c $(CFLAGS) b_hachage.c
+
 clean:
 	rm -rf *.o biblimain

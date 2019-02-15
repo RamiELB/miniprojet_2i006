@@ -132,5 +132,7 @@ FILE *f;
   return nbr;
 }
 
-
-
+void scan_entree(char *s){
+    scanf("%s", s);
+    while (getchar() != '\n');
+}

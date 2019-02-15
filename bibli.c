@@ -26,12 +26,12 @@ void lecture_n_entree(char *nom_fichier, int nb_lignes, Biblio *b){
     int i;
     int num;
     char titre[50];
-    char auteur[30];
+    char auteur[50];
     s_livre * l;
     for(i=0; i<nb_lignes; i++){
         num = GetEntier(f);
         GetChaine(f,50,titre);
-        GetChaine(f,30,auteur);
+        GetChaine(f,50,auteur);
         l = creer_livre(num,titre,auteur);
         ajouter_livre(b,l);
         SkipLine(f);
@@ -43,7 +43,7 @@ void afficher_livre(s_livre *l){
     printf("Livre numéro %d, Titre : %s, Auteur : %s\n", l->num, l->titre, l->auteur);
 }
 
-s_livre *recherche_par_numero(int n, Biblio *b, int appel){ 
+s_livre *recherche_par_numero(int n, Biblio *b, int appel_exp){ 
     /*l'argument appel sert à n'afficher que le livre n'est pas disponible uniquement si la fonction
       est appelée explicitement depuis le menu */
     s_livre *l = b->L;
@@ -52,7 +52,7 @@ s_livre *recherche_par_numero(int n, Biblio *b, int appel){
     }
     if(l!=NULL){
         afficher_livre(l);
-    }else if(appel ==1){
+    }else if(appel_exp){
         printf("Il n'y a pas de livre numéro %d\n", n);
     }
     return l;
@@ -133,7 +133,7 @@ s_livre *recherche_doublons(Biblio *b){
                     *liste = *cpt1;
                     liste->suiv = NULL;
                 }else{
-                buffer = creer_livre(cpt_doublons, cpt1->titre, cpt1->auteur);
+                buffer = creer_livre(cpt1->num, cpt1->titre, cpt1->auteur);
                 buffer->suiv = liste;
                 liste = buffer;
                 }

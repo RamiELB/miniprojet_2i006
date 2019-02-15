@@ -29,3 +29,4 @@ int GetEntier(FILE *f);
 /* LECTURE ET TRANSFORMATION DE CARACTERES EN ENTIERS REELS */
 double GetReel(FILE *f);
 
+void scan_entree(char *s); //scanf personnalisé avec nettoyage du buffer

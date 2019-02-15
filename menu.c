@@ -67,12 +67,6 @@ void afficher_liste_livres(s_livre *liste){
     }
 }
 
-
-void scan_entree(char *s){
-    scanf("%s", s);
-    while (getchar() != '\n');
-}
-
 void ajout_livre_utilisateur(Biblio *b){
     char titre[126];
     char auteur[126];
@@ -103,9 +97,10 @@ void ajout_livre_utilisateur(Biblio *b){
 }
 
 void free_livres(s_livre* l){
-    s_livre *prec = NULL;
+    s_livre *suivant = NULL;
     while(l){
-        prec = l;
+        suivant = l->suiv;
         free(l);
+        l = suivant;
     }
 }

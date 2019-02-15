@@ -28,7 +28,7 @@ void lecture_n_entree(char *nom_fichier, int nb_lignes, Biblio *b); //lis n lign
 
 void afficher_livre(s_livre *l); //affiche un livre
 
-s_livre *recherche_par_numero(int n, Biblio *b, int appel); //recherche d'un livre par son numéro
+s_livre *recherche_par_numero(int n, Biblio *b, int appel_exp); //recherche d'un livre par son numéro
 /*l'argument appel sert à n'afficher que le livre n'est pas disponible uniquement si la fonction
       est appelée explicitement depuis le menu */
 
