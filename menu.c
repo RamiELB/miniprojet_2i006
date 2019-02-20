@@ -44,11 +44,13 @@ void choix_menu(Biblio *b){
             supprimer_livre(numero2, b);
             break;
         case '6': ; //ce ; sert à enlever une erreur de compilation
-            s_livre *liste = recherche_doublons(b);            
-            printf("Souhaitez-vous les afficher? (Y/n)\n");
-            scan_entree(lecture);
-            if (strcmp(lecture,"y") == 0 || strcmp(lecture,"Y") == 0){
-                afficher_liste_livres(liste);
+            s_livre *liste = recherche_doublons(b);             
+            if(liste->num != -1){
+                printf("Souhaitez-vous les afficher? (Y/n)\n");
+                scan_entree(lecture);
+                if (strcmp(lecture,"y") == 0 || strcmp(lecture,"Y") == 0){
+                    afficher_liste_livres(liste);
+                }
             }
             free_livres(liste);
             break;
@@ -83,8 +85,6 @@ void ajout_livre_utilisateur(Biblio *b){
             numero = 0;
         }
     }
-
-
     printf("Quel est le titre du livre à ajouter?\n");
     scan_entree(titre);
 

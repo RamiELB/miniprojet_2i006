@@ -121,9 +121,9 @@ FILE *f;
   }
   nbr=v1;
   
-  for(i=0;i<puiss;i++)
+  for(i=0;i<puiss;i++){
    nbr=nbr/10;
- 
+  }
    nbr=nbr+v;  
    if (sign)
     nbr = -1*nbr;

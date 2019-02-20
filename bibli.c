@@ -32,6 +32,10 @@ void lecture_n_entree(char *nom_fichier, int nb_lignes, Biblio *b){
         num = GetEntier(f);
         GetChaine(f,50,titre);
         GetChaine(f,50,auteur);
+        if(strlen(titre) == 0){
+            //fin du fichier
+            break;
+        }
         l = creer_livre(num,titre,auteur);
         ajouter_livre(b,l);
         SkipLine(f);
@@ -121,17 +125,17 @@ s_livre *recherche_doublons(Biblio *b){
     s_livre *cpt1;
     s_livre *cpt2;
     s_livre *liste = malloc(sizeof(s_livre));
-    liste->num = -1;
+    liste->suiv = NULL;
+    liste->num = -1; //pour identifier la première insertion
     s_livre *buffer = NULL;
     int cpt_doublons = 0;
 
     for(cpt1=b->L; cpt1 != NULL; cpt1=cpt1->suiv){
         for(cpt2=cpt1->suiv; cpt2 != NULL; cpt2 = cpt2->suiv){
             //printf("Comparaisons des livres %d et %d\n", cpt1->num, cpt2->num);
-            if(strcmp(cpt1->titre,cpt2->titre) == 0 && strcmp(cpt1->auteur,cpt2->auteur)){
+            if((strcmp(cpt1->titre,cpt2->titre) == 0) && (strcmp(cpt1->auteur,cpt2->auteur) == 0)){
                 if(liste->num == -1){ //première insertion
                     *liste = *cpt1;
-                    liste->suiv = NULL;
                 }else{
                 buffer = creer_livre(cpt1->num, cpt1->titre, cpt1->auteur);
                 buffer->suiv = liste;
@@ -142,6 +146,6 @@ s_livre *recherche_doublons(Biblio *b){
             }
         }
     }
-    printf("Il y a %d ouvrages présents au moins en double\n", cpt_doublons);
+    printf("Il y a %d doublons (un livre présent 3 fois est considéré comme 2 doublons)\n", cpt_doublons);
     return liste;
 }

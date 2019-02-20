@@ -1,4 +1,4 @@
-CFLAGS=-g -Wall
+CFLAGS=-g -Wall -lm
 
 all: biblimain
 
@@ -18,5 +18,9 @@ menu.o : menu.c
 b_hachage.o : b_hachage.c
 	gcc -c $(CFLAGS) b_hachage.c
 
+h_main: h_main.c b_hachage.o entree_sortie.o
+	gcc -c $(CFLAGS) h_main.c
+	gcc -o h_main $(CFLAGS) h_main.o b_hachage.o entree_sortie.o
+
 clean:
-	rm -rf *.o biblimain
+	rm -rf *.o biblimain h_main

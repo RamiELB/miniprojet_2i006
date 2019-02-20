@@ -14,7 +14,6 @@ int main(int argc, char **argv){
     Biblio *B;
     initialise_biblio(&B);
     lecture_n_entree(nom_fichier, nb_lignes, B);
-    
     while(1){
         affichage_menu();
         choix_menu(B);
